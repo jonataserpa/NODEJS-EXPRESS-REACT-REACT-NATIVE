@@ -41,7 +41,7 @@ module.exports = {
 
         if(incident == undefined){
             return response.status(401).json({ error: 'id not exist. ' });
-        } else if(incident.ong_id != ong_id){
+        } else if(incident.ong_id !== ong_id){
             return response.status(401).json({ error: 'Operation not permitted. ' });
         }else{
             await connection('incidents').where('id', id).delete();
@@ -64,7 +64,7 @@ module.exports = {
         
         if(incident == undefined){
             return response.status(401).json({ error: 'id not exist. ' });
-        } else if(incident.ong_id != ong_id){
+        } else if(incident.ong_id !== ong_id){
             return response.status(401).json({ error: 'Operation not permitted. ' });
         }else{
             const { title, description, value} = request.body;

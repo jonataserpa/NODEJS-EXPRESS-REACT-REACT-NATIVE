@@ -11,11 +11,11 @@ export default function Logon(){
     const [id, setId] = useState('');
     const history = useHistory();
 
-    async function handleRegister(e){
+    async function handleLogon(e){
         e.preventDefault();
 
         try {
-            const response = await api.post('sessions', id);
+            const response = await api.post('sessions', {id});
             localStorage.setItem('ongId', id);
             localStorage.setItem('ongName', response.data.name);
             history.push('/profile');
@@ -29,7 +29,7 @@ export default function Logon(){
             <section className="form">
                 <img src={logoImg} alt="Be the Hero" />
 
-                <form>
+                <form onSubmit={handleLogon}>
                     <h1>Faça o seu logon</h1>
                     <input placeholder="Sua ID" value={id} onChange={e => setId(e.target.value)} />
                     <button className="button" type="submit">Entrar</button>
